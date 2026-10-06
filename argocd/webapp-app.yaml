@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: webapp-argocd
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/NagallaNeelima/gitops-lab.git
+    targetRevision: main
+    path: apps/webapp/overlays/argocd
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: webapp-argocd
